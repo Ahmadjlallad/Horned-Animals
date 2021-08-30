@@ -1,16 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Main from "./component/Main";
-import Header from "./component/Header";
-import Footer from "./component/Footer";
-import "./component/App.css";
+import App from "./App";
 ReactDOM.render(
   <React.StrictMode>
-    <>
-      <Header />
-      <Main />
-      <Footer author={"Ahmad Jallad"} />
-    </>
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );
