@@ -4,15 +4,36 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Card } from "react-bootstrap";
 
 export default class HornedBeasts extends React.Component {
-  state = { clickNumber: 0, imageHight: 0, cardBody: 0 };
+  state = {
+    clickNumber: 0,
+    imageHight: 0,
+    cardBody: 0,
+  };
   imageHightComp = React.createRef();
   cardBody = React.createRef();
   componentDidMount() {
     this.setState({ imageHight: this.imageHightComp, cardBody: this.cardBody });
   }
-  render() {
+
+  renderLunchButton = (buttonState = true) => {
+    if (!buttonState) return null;
+
     return (
-      <Card style={{ width: "18rem" }}>
+      <Button
+        onClick={() => {
+          this.props.selectedButton(true);
+          this.props.modalViewButton();
+        }}
+        variant="primary"
+      >
+        Launch demo modal
+      </Button>
+    );
+  };
+  render() {
+    const width = this.props.width ?? `18rem`;
+    return (
+      <Card style={{ width }}>
         <Card.Img
           ref={this.imageHightComp}
           className="imagesH"
@@ -36,7 +57,7 @@ export default class HornedBeasts extends React.Component {
           <Card.Title>{this.props.title}</Card.Title>
           <Card.Text>{this.props.description}</Card.Text>
           <Card.Text>favorites: ❤ {this.state.clickNumber} ❤</Card.Text>
-          <Button variant="primary">Go somewhere</Button>
+          {this.renderLunchButton(this.props.renderButton)}
         </Card.Body>
       </Card>
     );

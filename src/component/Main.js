@@ -1,6 +1,5 @@
 import React from "react";
 import HornedBeasts from "./HornedBeasts";
-import ImagesData from "../FakeAPI/unsplash";
 import { Row, Container, Col } from "react-bootstrap";
 
 export default class Main extends React.Component {
@@ -44,11 +43,14 @@ export default class Main extends React.Component {
       return (
         <Col md={4} key={this.fakeKey()} ref={this.colHeight}>
           <HornedBeasts
+            selectedButton={this.props.showModelUpdate}
             colHeight={this.state.coloneHeight}
             title={image.title}
             imageUrl={image.image_url}
             description={image.description}
             horns={image.horns}
+            modalViewButton={() => this.props.clickedObject(image)}
+            clickNumber={this.props.clickNumber}
           />
         </Col>
       );
@@ -56,9 +58,8 @@ export default class Main extends React.Component {
   }
   componentDidMount() {
     this.setState({ coloneHeight: this.colHeight.current.clientHeight });
-    console.log(this.colHeight.current.clientHeight);
   }
   render() {
-    return <Container>{this.group3Img(ImagesData)}</Container>;
+    return <Container>{this.group3Img(this.props.HornedBeastsData)}</Container>;
   }
 }
