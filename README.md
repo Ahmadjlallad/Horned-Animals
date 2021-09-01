@@ -69,7 +69,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-# class-03
+# class-03-lab
 
 ---
 
@@ -82,3 +82,17 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - Finish time: **12:30**
 
 - Actual time needed to complete: **12:43**
+
+# class-04-lab
+
+---
+
+- Number and name of feature: **\*\***\*\***\*\***Feature 1. Filter by Numbers of Horns**\*\***\*\***\*\***
+
+- Estimate of time needed to complete: **30min**
+
+- Start time: **2**
+
+- Finish time: **2:45**
+
+- Actual time needed to complete: **2:34**

@@ -44,9 +44,9 @@ export default class HornedBeasts extends React.Component {
           style={{
             height:
               (this.props.colHeight -
-                this.state.imageHight * 2 -
+                this.state.imageHight -
                 this.state.cardBody) /
-                1.1 +
+                0.75 +
               "px",
           }}
           src={this.props.imageUrl}

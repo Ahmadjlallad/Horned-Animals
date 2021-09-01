@@ -1,17 +1,17 @@
 import React from "react";
 import HornedBeasts from "./HornedBeasts";
 import { Row, Container, Col } from "react-bootstrap";
-
+import FilterImages from "./FilterImages";
 export default class Main extends React.Component {
   colHeight = React.createRef();
   state = { coloneHeight: 0 };
-  _key = [];
+  #_key = [];
   fakeKey = () => {
     let key = Math.random() * 100;
-    while (this._key.includes(key)) {
+    while (this.#_key.includes(key)) {
       key = Math.trunc(Math.random() * 1000);
     }
-    this._key.push(key);
+    this.#_key.push(key);
     return key;
   };
   group3Img = (ImagesData) => {
@@ -50,7 +50,6 @@ export default class Main extends React.Component {
             description={image.description}
             horns={image.horns}
             modalViewButton={() => this.props.clickedObject(image)}
-            clickNumber={this.props.clickNumber}
           />
         </Col>
       );
@@ -60,6 +59,17 @@ export default class Main extends React.Component {
     this.setState({ coloneHeight: this.colHeight.current.clientHeight });
   }
   render() {
-    return <Container>{this.group3Img(this.props.HornedBeastsData)}</Container>;
+    return (
+      <Container>
+        <Row>
+          <Col lg={4} style={{ margin: "5rem" }}>
+            <FilterImages selectedHorn={this.props.selectedHorn} />
+          </Col>
+          <Col style={{ marginInline: "5rem" }} lg={12}>
+            {this.group3Img(this.props.HornedBeastsData)}
+          </Col>
+        </Row>
+      </Container>
+    );
   }
 }
