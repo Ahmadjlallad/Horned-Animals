@@ -6,7 +6,13 @@ import HornedBeastsData from "./FakeAPI/unsplash.json";
 import SelectedBeast from "./component/SelectedBeast";
 
 export default class App extends React.Component {
-  state = { show: false, clickedObject: [], grabOnClick: 0 };
+  state = {
+    show: false,
+    clickedObject: [],
+    grabOnClick: 0,
+    hornNumber: 0,
+  };
+
   grabOnClick = (clicked) => {
     this.setState({ grabOnClick: clicked + this.state.grabOnClick + 1 });
   };
@@ -16,6 +22,17 @@ export default class App extends React.Component {
   clickedObject = (updateValue) => {
     this.setState({ clickedObject: updateValue });
   };
+  selectedHorn = (hornNumber) => {
+    this.setState({ hornNumber });
+  };
+  sendHornedBeastsData = (data) => {
+    if (this.state.hornNumber === 0) return data;
+    else
+      return data.filter((singlePiceOfData) => {
+        return singlePiceOfData.horns === this.state.hornNumber;
+      });
+  };
+
   handleClose = () => this.setState({ show: false });
   render() {
     return (
@@ -23,8 +40,9 @@ export default class App extends React.Component {
         <Header />
         <Main
           showModelUpdate={this.showModelUpdate}
-          HornedBeastsData={HornedBeastsData}
+          HornedBeastsData={this.sendHornedBeastsData(HornedBeastsData)}
           clickedObject={this.clickedObject}
+          selectedHorn={this.selectedHorn}
         />
         <SelectedBeast
           show={this.state.show}
